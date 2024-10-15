@@ -13,6 +13,12 @@ export function add(numbers: string): number {
     // console.log("formattedNumbers-", formattedNumbers);
 
     const numArray = formattedNumbers.split(delimiter).map(Number);
+    
+    const negativeNumbers = numArray.filter(num => num < 0);
+    if (negativeNumbers.length) {
+        throw new Error(`negative numbers not allowed: ${negativeNumbers.join(',')}`);
+    }
+
     return numArray.reduce((sum, num) => sum + num, 0);
 }
   
